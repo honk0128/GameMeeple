@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Tailwind Starter Template - Nordic Shop: Tailwind Toolbox</title>
+    <meta
+      name="description"
+      content="Free open source Tailwind CSS Store template"
+    />
+    <meta
+      name="keywords"
+      content="tailwind,tailwindcss,tailwind css,css,starter template,free template,store template, shop layout, minimal, monochrome, minimalistic, theme, nordic"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Work+Sans:200,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      .custom-hr {
+        height: 5px;
+        background-image: linear-gradient(to right, #f15f5f, #281818);
+        background-color: #f15f5f;
+        width: 15%;
+      }
+      .custom-title {
+        font-size: 30px;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 20px;
+      }
+
+      .custom-subtitle {
+        font-size: 22px;
+        font-weight: bold;
+        color: #666;
+        margin-bottom: 30px;
+      }
+
+      .work-sans {
+        font-family: 'Work Sans', sans-serif;
+      }
+
+      #menu-toggle:checked + #menu {
+        display: block;
+      }
+
+      .hover\:grow {
+        transition: all 0.3s;
+        transform: scale(1);
+      }
+
+      .hover\:grow:hover {
+        transform: scale(1.02);
+      }
+
+      .carousel-open:checked + .carousel-item {
+        position: static;
+        opacity: 100;
+      }
+
+      .carousel-item {
+        -webkit-transition: opacity 0.6s ease-out;
+        transition: opacity 0.6s ease-out;
+      }
+
+      #carousel-1:checked ~ .control-1,
+      #carousel-2:checked ~ .control-2,
+      #carousel-3:checked ~ .control-3 {
+        display: block;
+      }
+
+      .carousel-indicators {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        position: absolute;
+        bottom: 2%;
+        left: 0;
+        right: 0;
+        text-align: center;
+        z-index: 10;
+      }
+
+      #carousel-1:checked
+        ~ .control-1
+        ~ .carousel-indicators
+        li:nth-child(1)
+        .carousel-bullet,
+      #carousel-2:checked
+        ~ .control-2
+        ~ .carousel-indicators
+        li:nth-child(2)
+        .carousel-bullet,
+      #carousel-3:checked
+        ~ .control-3
+        ~ .carousel-indicators
+        li:nth-child(3)
+        .carousel-bullet {
+        color: #000;
+        /*Set to match the Tailwind colour you want the active one to be */
+      }
+    </style>
+  </head>
+
+  <body
+    class="bg-white text-gray-600 work-sans leading-normal text-base tracking-normal"
+  >
+    <!--Nav-->
+    <nav id="header" class="w-full z-30 top-0 py-1">
+      <div
+        class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-6 py-3"
+      >
+        <label for="menu-toggle" class="cursor-pointer md:hidden block">
+          <svg
+            class="fill-current text-gray-900"
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+          >
+            <title>menu</title>
+            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
+          </svg>
+        </label>
+        <input class="hidden" type="checkbox" id="menu-toggle" />
+
+        <div
+          class="hidden md:flex md:items-center md:w-auto w-full order-3 md:order-1"
+          id="menu"
+        >
+          <nav>
+            <ul
+              class="md:flex items-center justify-between text-base text-gray-700 pt-4 md:pt-0"
+            >
+              <li>
+                <a
+                  class="inline-block no-underline text-black font-bold hover:underline py-2 px-4"
+                  href="/"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  class="inline-block no-underline hover:text-black hover:underline py-2 px-4"
+                  href="about.html"
+                  >About</a
+                >
+              </li>
+              <li>
+                <a
+                  class="inline-block no-underline hover:text-black hover:underline py-2 px-4"
+                  href="games.html"
+                  >Games</a
+                >
+              </li>
+            </ul>
+          </nav>
+        </div>
+
+        <!-- Main Title -->
+        <div class="order-1 md:order-2">
+          <a
+            class="flex items-center tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl"
+            href="/"
+          >
+            <div id="animation" class="w-20 h-20 text-gray-800 mr-2 mb-7"></div>
+
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.12/lottie.min.js"></script>
+            <script>
+              var animationData = 'public/json/dice.json' // JSON 파일 경로
+              var animation = lottie.loadAnimation({
+                container: document.getElementById('animation'),
+                renderer: 'svg',
+                loop: true,
+                autoplay: true,
+                path: animationData, // JSON 파일 경로를 path 옵션으로 전달
+              })
+            </script>
+            Game Meeple
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container mx-auto py-6">
+      <div class="mb-6">
+        <h2 class="text-3xl font-bold mb-2 text-center">팀원 소개</h2>
+      </div>
+      
+      <section
+        class="bg-white shadow-lg rounded-lg px-8 py-6 grid grid-cols-3 gap-4"
+      >
+        <div class="bg-gray-50 p-4 rounded-lg shadow-md">
+        <img
+          src="./public/images/DAP.jpg"
+          alt="김다혁"
+          class="w-32 h-32 rounded-full mx-auto mb-4"
+        />
+        <h3 class="text-lg font-bold mb-2 mr-4 text-center">김다혁</h3>
+        <hr class="my-2" />
+        <h3 class="text-lg font-bold mb-2 mr-4 text-xl">역할 : 조장</h3>
+        <p>- 메인 홈페이지 제작</p>
+        <p>- 오류 검수</p>
+        <p>- 의견 조율</p>
+        <br />
+        
+        <div class="flex justify-end">
+          <a href="https://web-blog-12103-tailwind.netlify.app/" target="_blank" class="bg-black text-white text-sm py-2 px-4 rounded-full">개인 홈페이지</a>
+
+          
+        </div>
+
+      </div>
+      <div class="bg-gray-50 p-4 rounded-lg shadow-md">
+          <img
+            src="./public/images/Joo.png"
+            alt="원주연"
+            class="w-32 h-32 rounded-full mx-auto mb-4"
+          />
+          <h3 class="text-lg font-bold mb-2 mr-4 text-center">원주연</h3>
+          <hr class="my-2" />
+          <h3 class="text-lg font-bold mb-2 mr-4 text-xl">역할 : 조원</h3>
+          <p>- About 홈페이지 작성</p>
+          <p>- Games 홈페이지 제작 보조</p>
+          <p>- 자료 수집</p>
+          <br />
+          <div class="flex justify-end">
+            <a href="https://main--musical-muffin-ba5f3a.netlify.app/index.html" target="_blank" class="bg-black text-white text-sm py-2 px-4 rounded-full"
+              >개인 홈페이지</a
+            >
+          </div>
+        </div>
+        <div class="bg-gray-50 p-4 rounded-lg shadow-md">
+          <img
+          src="./public/images/HSH.png"
+          alt="홍승현"
+          class="w-32 h-32 rounded-full mx-auto mb-4"
+        />
+          <h3 class="text-lg font-bold mb-2 mr-4 text-center">홍승현</h3>
+          <hr class="my-2" />
+          <h3 class="text-lg font-bold mb-2 mr-4 text-xl">역할 : 조원</h3>
+          <p>- 메인 홈페이지 제작 보조</p>
+          <p>- JavaScript 주요 기능 개발</p>
+          <p>- Games 홈페이지 작성</p>
+          <br />
+          <div class="flex justify-end">
+            <a href="https://fanciful-pie-66f4e7.netlify.app/" target="_blank" class="bg-black text-white text-sm py-2 px-4 rounded-full"
+              >개인 홈페이지</a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <br />
+    <br />
+    
+    <div class="custom-title text-center">
+      Team GameMeeple<br />
+      Project
+    </div>
+    <div class="custom-hr mx-auto"></div>
+    <br />
+    <br />
+    <div class="bg-white shadow-lg rounded-lg px-8 py-6">
+      <img src="./public/images/Board.jpg" alt="" class=" w-4/5 h-4/5 mb-4 mx-auto" />
+      <br />
+      <p class="text-lg text-center mx-auto max-w-5xl">
+        Game Meeple의 이 프로젝트는 보드게임을 소개하기 위해 만들어졌습니다.
+        <br />
+        각 보드게임의 독특한 특성과 특징들을 카테고리별로 분류하여 소개하고
+        있습니다.
+        <br />이를 통해 가족 혹은 지인분들과 보드게임을 경험해보면서, 더욱
+        즐거운 추억을 쌓아가세요.
+      </p>
+      <br />
+      <br />
+      <p class="text-lg text-center mx-auto max-w-5xl" style="color: #817c7c">
+        Game Meeple's project was created to introduce board games.
+        <br />
+        The unique characteristics and characteristics of each board game are
+        classified and introduced by category.
+        <br />
+        Through this, you can experience board games with your family or
+        acquaintances and make more enjoyable memories.
+      </p>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+
+      <div class="custom-title text-center">데모 영상</div>
+      <div class="custom-hr mx-auto"></div>
+      <br />
+      <br />
+      <br />
+      <div>
+        <iframe
+          src="https://www.youtube.com/embed/u6MLVSaQ9rc"
+          frameborder="0"
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          style="width: 100%; max-width: 860px; height: 475px; border: none; display: block; margin-left: auto; margin-right: auto;"
+        ></iframe>
+      </div>
+      
+      
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <div class="custom-title text-center">참고 사이트</div>
+      <div class="custom-hr mx-auto"></div>
+      <br />
+      <div class="container mx-auto my-8">
+        <div class="grid grid-cols-3 gap-8">
+          <div class="text-center mx-auto">
+            <a href="https://www.boardmfactory.com/"  target="_blank">
+              <img src="./public/images/Boardmfactory.png" alt="https://www.boardmfactory.com/" class="mx-auto mb-4" />
+            </a>
+            <p>BoardMfactory</p>
+          </div>
+          <div class="text-center mx-auto flex flex-col items-center">
+            <a href="https://www.boardgamemall.co.kr/main/index.php" target="_blank" style="margin-top: 80px;">
+              <img src="./public/images/Bmall.png" alt="https://www.boardgamemall.co.kr/main/index.php" class="mx-auto mb-4" />
+            </a>
+            <p>보드게임몰</p>
+          </div>
+          <div class="text-center mx-auto flex flex-col items-center">
+            <a href="https://www.divedice.com/" target="_blank" style="margin-top: 45px;">
+              <img src="./public/images/divedice.png" alt="https://www.divedice.com/" class="mx-auto mb-4" />
+            </a>
+            <p>Divedice</p>
+          </div>
+        </div>
+      </div>
+      <br />
+      <br />
+      <br />
+
+    <footer class="container mx-auto bg-white py-8 border-t border-gray-400">
+      <div class="container flex px-3 py-8">
+        <div class="w-full mx-auto flex flex-wrap">
+          <div class="flex w-full lg:w-1/2">
+            <div class="px-3 md:px-0">
+              <h3 class="font-bold text-gray-900">&copy; Copyright</h3>
+              <p class="py-4">
+                2023 &middot; Joonbu Univ. &middot; Team GameMeeple
+              </p>
+            </div>
+          </div>
+          <div class="flex w-full lg:w-1/2 lg:justify-end lg:text-right">
+            <div class="px-3 md:px-0">
+              <h3 class="font-bold text-gray-900">Link</h3>
+              <ul class="list-reset items-center pt-3">
+                <li>
+                  <a
+                    class="inline-block no-underline hover:text-black hover:underline py-1"
+                    href="#"
+                    >Game Meeple</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

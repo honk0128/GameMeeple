@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>GameMeeple - Games</title>
+    <meta name="description" content="Free open source Tailwind CSS Store template" />
+    <meta name="keywords" content="tailwind,tailwindcss,tailwind css,css,starter template,free template,store template, shop layout, minimal, monochrome, minimalistic, theme, nordic" />
+
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" />
+
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:200,400&display=swap" rel="stylesheet" />
+
+    <style>
+      .work-sans {
+        font-family: "Work Sans", sans-serif;
+      }
+
+      #menu-toggle:checked + #menu {
+        display: block;
+      }
+
+      .hover\:grow {
+        transition: all 0.3s;
+        transform: scale(1);
+      }
+
+      .hover\:grow:hover {
+        transform: scale(1.02);
+      }
+
+      .carousel-open:checked + .carousel-item {
+        position: static;
+        opacity: 100;
+      }
+
+      .carousel-item {
+        -webkit-transition: opacity 0.6s ease-out;
+        transition: opacity 0.6s ease-out;
+      }
+
+      #carousel-1:checked ~ .control-1,
+      #carousel-2:checked ~ .control-2,
+      #carousel-3:checked ~ .control-3 {
+        display: block;
+      }
+
+      .carousel-indicators {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        position: absolute;
+        bottom: 2%;
+        left: 0;
+        right: 0;
+        text-align: center;
+        z-index: 10;
+      }
+
+      #carousel-1:checked ~ .control-1 ~ .carousel-indicators li:nth-child(1) .carousel-bullet,
+      #carousel-2:checked ~ .control-2 ~ .carousel-indicators li:nth-child(2) .carousel-bullet,
+      #carousel-3:checked ~ .control-3 ~ .carousel-indicators li:nth-child(3) .carousel-bullet {
+        color: #000;
+        /*Set to match the Tailwind colour you want the active one to be */
+      }
+    </style>
+  </head>
+
+  <body class="bg-white text-gray-600 work-sans leading-normal text-base tracking-normal">
+    <!--Nav-->
+    <nav id="header" class="w-full z-30 top-0 py-1">
+      <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-6 py-3">
+        <label for="menu-toggle" class="cursor-pointer md:hidden block">
+          <svg class="fill-current text-gray-900" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+            <title>menu</title>
+            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
+          </svg>
+        </label>
+        <input class="hidden" type="checkbox" id="menu-toggle" />
+
+        <div class="hidden md:flex md:items-center md:w-auto w-full order-3 md:order-1" id="menu">
+          <nav>
+            <ul class="md:flex items-center justify-between text-base text-gray-700 pt-4 md:pt-0">
+              <li><a class="inline-block no-underline text-black font-bold hover:underline py-2 px-4" href="/">Home</a></li>
+              <li><a class="inline-block no-underline hover:text-black hover:underline py-2 px-4" href="about.html">About</a></li>
+              <li><a class="inline-block no-underline hover:text-black hover:underline py-2 px-4" href="games.html">Games</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <!-- Main Title -->
+        <div class="order-1 md:order-2">
+          <a class="flex items-center tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl" href="/">
+            <div id="animation" class="w-20 h-20 text-gray-800 mr-2 mb-7"></div>
+
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.12/lottie.min.js"></script>
+            <script>
+              var animationData = "public/json/dice.json"; // JSON 파일 경로
+              var animation = lottie.loadAnimation({
+                container: document.getElementById("animation"),
+                renderer: "svg",
+                loop: true,
+                autoplay: true,
+                path: animationData, // JSON 파일 경로를 path 옵션으로 전달
+              });
+            </script>
+            Game Meeple
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <section class="bg-white py-8">
+      <div class="container mx-auto flex items-center flex-wrap pt-4 pb-12">
+        <nav id="Best Items" class="w-full z-30 top-0 px-6 py-1">
+          <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-2 py-3">
+            <h2 class="text-2xl font-bold md:text-3xl tracking-wide no-underline hover:no-underline font-bold text-gray-800">Games</h2>
+          </div>
+        </nav>
+
+        <div class="container my-5">
+          <div class="flex">
+            <form class = "ml-auto">
+              <div class="form-row">
+                <div class="form-group col-md-4">
+                  <select class="block w-full py-2 px-3 border border-gray-300 bg-white text-base focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent rounded-md" id="sortPrice">
+                    <option value="asc">낮은 가격 순</option>
+                    <option value="desc">높은 가격 순</option>
+                  </select>
+                </div>
+              </div>
+              <button type="submit" class="mt-2 ml-12 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                정렬하기
+              </button>
+            
+            </form>
+          </div>
+          <div id="productList" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+          </div>
+        </div>
+        
+
+        <script>
+          // Sample products data
+
+
+          function formatPrice(price) {
+            return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+          }
+          const products = [
+            {
+              name: '할리갈리',
+              member: "2~6",
+              price: 19000,
+              formattedPrice: formatPrice(19000),
+              imgSrc: './public/images/game3-1.jpg',
+              link: "https://www.divedice.com/shop/detail.php?pno=B09007D46D54F6BB4166F7D582A3F5D9&rURL=https%3A%2F%2Fwww.divedice.com%2Fshop%2Fsearch_result.php%3Fsearch_str%3D%25ED%2595%25A0%25EB%25A6%25AC%25EA%25B0%2588%25EB%25A6%25AC%26x%3D0%26y%3D0&ctype=1&cno1="
+            },
+            {
+              name: '슬레이 더 스파이어',
+              member: "1~4",
+              price: 280000,
+              formattedPrice: formatPrice(280000),
+              imgSrc: './public/images/game3-2.png',
+              link: "https://www.divedice.com/shop/detail.php?pno=A5AD96AAA66880F3FAE475FA926781D2&rURL=https%3A%2F%2Fwww.divedice.com%2Fshop%2Fsearch_result.php%3Fsearch_str%3D%25EC%258A%25AC%25EB%25A0%2588%25EC%259D%25B4%26x%3D0%26y%3D0&ctype=1&cno1="
+            },
+            {
+              name: '도미니언',
+              member: "2~4",
+              price: 59000,
+              formattedPrice: formatPrice(59000),
+              imgSrc: './public/images/game3-3.jpg',
+              link: "https://www.divedice.com/shop/detail.php?pno=FC32F8C132C0FB39C91D4F3DAD7085A4&rURL=https%3A%2F%2Fwww.divedice.com%2Fshop%2Fsearch_result.php%3Fsearch_str%3D%25EB%258F%2584%25EB%25AF%25B8%25EB%258B%2588%25EC%2596%25B8%26x%3D0%26y%3D0&ctype=1&cno1="
+            },
+            {
+              name: '레즈 아르카나',
+              member: "2~4",
+              price: 52000,
+              formattedPrice: formatPrice(52000),
+              imgSrc: './public/images/game3-4.png',
+              link: "https://www.divedice.com/shop/detail.php?pno=7E286DB248221621ADC954F00E6A0255&rURL=https%3A%2F%2Fwww.divedice.com%2Fshop%2Fbig_section.php%3Fpage%3D2%26cno1%3D2147&ctype=1&cno1=2147"
+            },
+            {
+              name: '레이크홀트',
+              member: "1~4",
+              price: 69000,
+              formattedPrice: formatPrice(69000),
+              imgSrc: './public/images/game3-5.png',
+              link: "https://www.divedice.com/shop/detail.php?pno=D3B724E14DFE42F0A53C86DC5AAFD20F&rURL=https%3A%2F%2Fwww.divedice.com%2Fshop%2Fbig_section.php%3Fpage%3D11%26cno1%3D2147&ctype=1&cno1=2147"
+            },
+            {
+              name: '캔버스',
+              member: "1~5",
+              price: 59000,
+              formattedPrice: formatPrice(59000),
+              imgSrc: './public/images/game3-6.png',
+              link: "https://www.divedice.com/shop/detail.php?pno=02E2259AF55FB6A382CA7AA9F13319B3&rURL=https%3A%2F%2Fwww.divedice.com%2Fshop%2Fbig_section.php%3Fpage%3D16%26cno1%3D2147&ctype=1&cno1=2147"
+            },
+            {
+              name: '광기의 산맥',
+              member: "3~5",
+              price: 55000,
+              formattedPrice: formatPrice(55000),
+              imgSrc: './public/images/game3-7.png',
+              link: "https://www.divedice.com/shop/detail.php?pno=2D9A3E519C394E52E45C7DAB97557CCC&rURL=https%3A%2F%2Fwww.divedice.com%2Fshop%2Fbig_section.php%3Fpage%3D21%26cno1%3D2147&ctype=1&cno1=2147"
+            },
+            {
+              name: '워터게이트',
+              member: "2",
+              price: 43000,
+              formattedPrice: formatPrice(43000),
+              imgSrc: './public/images/game3-8.jpg',
+              link: "https://www.divedice.com/shop/detail.php?pno=C5F31ECF4111F3BBFA2B36F851379D6E&rURL=https%3A%2F%2Fwww.divedice.com%2Fshop%2Fbig_section.php%3Fpage%3D24%26cno1%3D2147&ctype=1&cno1=2147"
+            },
+            {
+              name: '드림 홈',
+              member: "2~4",
+              price: 49000,
+              formattedPrice: formatPrice(49000),
+              imgSrc: './public/images/game3-9.jpg',
+              link: "https://www.divedice.com/shop/detail.php?pno=B3E59BCEB1E975E5FC7F60BC079A65A0&rURL=https%3A%2F%2Fwww.divedice.com%2Fshop%2Fbig_section.php%3Fpage%3D32%26cno1%3D2147&ctype=1&cno1=2147"
+            },
+            {
+              name: '스플렌더',
+              member: "2~4",
+              price: 49000,
+              formattedPrice: formatPrice(49000),
+              imgSrc: './public/images/game3-10.jpg',
+              link: "https://www.divedice.com/shop/detail.php?pno=586691F81045EBFE99049A8A8E43EA2E&rURL=https%3A%2F%2Fwww.divedice.com%2Fshop%2Fbig_section.php%3Fpage%3D34%26cno1%3D2147&ctype=1&cno1=2147"
+            },
+            {
+              name: '마법의 미로',
+              member: "2~4",
+              price: 55000,
+              formattedPrice: formatPrice(55000),
+              imgSrc: './public/images/game3-11.png',
+              link: "https://www.divedice.com/shop/detail.php?pno=AC411F98B72734D56053360159F88447&rURL=https%3A%2F%2Fwww.divedice.com%2Fshop%2Fbig_section.php%3Fpage%3D35%26cno1%3D2147&ctype=1&cno1=2147"
+            },
+            {
+              name: '다빈치코드',
+              member: "2~4",
+              price: 26000,
+              formattedPrice: formatPrice(26000),
+              imgSrc: './public/images/game3-12.png',
+              link: "https://www.divedice.com/shop/detail.php?pno=1E2327ACCF8E3B40AC236B51C966F94A&rURL=https%3A%2F%2Fwww.divedice.com%2Fshop%2Fbig_section.php%3Fpage%3D36%26cno1%3D2147&ctype=1&cno1=2147"
+            },
+
+          ];
+
+
+          
+        
+          // Sorts products and updates the DOM
+          function sortProducts() {
+            const sortOption = document.getElementById('sortPrice').value;
+            let sortedProducts;
+        
+            switch (sortOption) {
+              case 'asc':
+                sortedProducts = products.sort((a, b) => a.price - b.price);
+                break;
+              case 'desc':
+                sortedProducts = products.sort((a, b) => b.price - a.price);
+                break;
+              default:
+                return;
+            }
+        
+            updateProductList(sortedProducts);
+          }
+        
+          function updateProductList(sortedProducts) {
+            const productList = document.getElementById('productList');
+            productList.innerHTML = '';
+        
+            sortedProducts.forEach(product => {
+              const productItem = `
+              <li class="p-6 flex flex-col">
+                <a href="${product.link}" target="_blank" class="cursor-pointer">
+                  <img class="w-full h-auto hover:grow hover:shadow-lg" src="${product.imgSrc}" />
+                </a>
+                  <div class="pt-3 flex items-center justify-between">
+                    <p>${product.name}</p>
+                    <div class="flex items-center">
+                <svg
+                  viewBox="0 0 20 20"
+                  version="1.1"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  fill="#808080"
+                  class="h-5 w-5 fill-current text-gray-500 hover:text-black"
+                >
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <title>profile_round [#1342]</title>
+                    <desc>Created with Sketch.</desc>
+                    <defs></defs>
+                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                      <g id="Dribbble-Light-Preview" transform="translate(-140.000000, -2159.000000)" fill="#808080">
+                        <g id="icons" transform="translate(56.000000, 160.000000)">
+                          <path
+                            d="M100.562548,2016.99998 L87.4381713,2016.99998 C86.7317804,2016.99998 86.2101535,2016.30298 86.4765813,2015.66198 C87.7127655,2012.69798 90.6169306,2010.99998 93.9998492,2010.99998 C97.3837885,2010.99998 100.287954,2012.69798 101.524138,2015.66198 C101.790566,2016.30298 101.268939,2016.99998 100.562548,2016.99998 M89.9166645,2004.99998 C89.9166645,2002.79398 91.7489936,2000.99998 93.9998492,2000.99998 C96.2517256,2000.99998 98.0830339,2002.79398 98.0830339,2004.99998 C98.0830339,2007.20598 96.2517256,2008.99998 93.9998492,2008.99998 C91.7489936,2008.99998 89.9166645,2007.20598 89.9166645,2004.99998 M103.955674,2016.63598 C103.213556,2013.27698 100.892265,2010.79798 97.837022,2009.67298 C99.4560048,2008.39598 100.400241,2006.33098 100.053171,2004.06998 C99.6509769,2001.44698 97.4235996,1999.34798 94.7348224,1999.04198 C91.0232075,1998.61898 87.8750721,2001.44898 87.8750721,2004.99998 C87.8750721,2006.88998 88.7692896,2008.57398 90.1636971,2009.67298 C87.1074334,2010.79798 84.7871636,2013.27698 84.044024,2016.63598 C83.7745338,2017.85698 84.7789973,2018.99998 86.0539717,2018.99998 L101.945727,2018.99998 C103.221722,2018.99998 104.226185,2017.85698 103.955674,2016.63598"
+                            id="profile_round-[#1342]"
+                          ></path>
+                        </g>
+                      </g>
+                    </g>
+                  </g>
+                </svg>
+                <p class="text-gray-900">&nbsp${product.member}</p>
+              </div>
+                  
+                  </div>
+                  <p class="pt-1 text-gray-900">&#8361;${product.formattedPrice}</p>
+                </a>
+                </li>
+              `;
+        
+              productList.innerHTML += productItem;
+            });
+          }
+        
+          // Initialize the product list
+          updateProductList(products);
+        
+          // Attach the sortProducts function to the form's submit event
+          document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            sortProducts();
+          });
+        </script>
+
+        </section>
+
+        <section class="bg-white py-8">
+          <div class="container py-8 px-6 mx-auto flex items-center justify-center">
+            <a href="games2.html" class="inline-flex items-center px-4 py-2 mr-3 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+              <svg aria-hidden="true" class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd"></path></svg>
+              Previous
+            </a>
+            <a href="#" class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+              Next
+              <svg aria-hidden="true" class="w-5 h-5 ml-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+            </a>
+          </div>
+        </section>
+
+
+    <!-- footer -->
+    <footer class="container mx-auto bg-white py-8 border-t border-gray-400">
+      <div class="container flex px-3 py-8">
+        <div class="w-full mx-auto flex flex-wrap">
+          <div class="flex w-full lg:w-1/2">
+            <div class="px-3 md:px-0">
+              <h3 class="font-bold text-gray-900">&copy; Copyright</h3>
+              <p class="py-4">2023 &middot; Joonbu Univ. &middot; Team GameMeeple</p>
+            </div>
+          </div>
+          <div class="flex w-full lg:w-1/2 lg:justify-end lg:text-right">
+            <div class="px-3 md:px-0">
+              <h3 class="font-bold text-gray-900">Link</h3>
+              <ul class="list-reset items-center pt-3">
+                <li>
+                  <a class="inline-block no-underline hover:text-black hover:underline py-1" href="#">Game Meeple</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="sort.js"></script>
+  </body>
+</html>

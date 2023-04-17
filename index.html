@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>GameMeeple - Home</title>
+    <meta name="description" content="Free open source Tailwind CSS Store template" />
+    <meta name="keywords" content="tailwind,tailwindcss,tailwind css,css,starter template,free template,store template, shop layout, minimal, monochrome, minimalistic, theme, nordic" />
+
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" />
+
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:200,400&display=swap" rel="stylesheet" />
+
+    <style>
+      .work-sans {
+        font-family: "Work Sans", sans-serif;
+      }
+
+      #menu-toggle:checked + #menu {
+        display: block;
+      }
+
+      .hover\:grow {
+        transition: all 0.3s;
+        transform: scale(1);
+      }
+
+      .hover\:grow:hover {
+        transform: scale(1.02);
+      }
+
+      .carousel-open:checked + .carousel-item {
+        position: static;
+        opacity: 100;
+      }
+
+      .carousel-item {
+        -webkit-transition: opacity 0.6s ease-out;
+        transition: opacity 0.6s ease-out;
+      }
+
+      #carousel-1:checked ~ .control-1,
+      #carousel-2:checked ~ .control-2,
+      #carousel-3:checked ~ .control-3 {
+        display: block;
+      }
+
+      .carousel-indicators {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        position: absolute;
+        bottom: 2%;
+        left: 0;
+        right: 0;
+        text-align: center;
+        z-index: 10;
+      }
+
+      #carousel-1:checked ~ .control-1 ~ .carousel-indicators li:nth-child(1) .carousel-bullet,
+      #carousel-2:checked ~ .control-2 ~ .carousel-indicators li:nth-child(2) .carousel-bullet,
+      #carousel-3:checked ~ .control-3 ~ .carousel-indicators li:nth-child(3) .carousel-bullet {
+        color: #000;
+        /*Set to match the Tailwind colour you want the active one to be */
+      }
+    </style>
+  </head>
+
+  <body class="bg-white text-gray-600 work-sans leading-normal text-base tracking-normal">
+    <!--Nav-->
+    <nav id="header" class="w-full z-30 top-0 py-1">
+      <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-6 py-3">
+        <label for="menu-toggle" class="cursor-pointer md:hidden block">
+          <svg class="fill-current text-gray-900" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+            <title>menu</title>
+            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
+          </svg>
+        </label>
+        <input class="hidden" type="checkbox" id="menu-toggle" />
+
+        <div class="hidden md:flex md:items-center md:w-auto w-full order-3 md:order-1" id="menu">
+          <nav>
+            <ul class="md:flex items-center justify-between text-base text-gray-700 pt-4 md:pt-0">
+              <li><a class="inline-block no-underline text-black font-bold hover:underline py-2 px-4" href="/">Home</a></li>
+              <li><a class="inline-block no-underline hover:text-black hover:underline py-2 px-4" href="about.html">About</a></li>
+              <li><a class="inline-block no-underline hover:text-black hover:underline py-2 px-4" href="games.html">Games</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <!-- Main Title -->
+        <div class="order-1 md:order-2">
+          <a class="flex items-center tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl" href="/">
+            <div id="animation" class="w-20 h-20 text-gray-800 mr-2 mb-7"></div>
+
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.12/lottie.min.js"></script>
+            <script>
+              var animationData = "public/json/dice.json"; // JSON 파일 경로
+              var animation = lottie.loadAnimation({
+                container: document.getElementById("animation"),
+                renderer: "svg",
+                loop: true,
+                autoplay: true,
+                path: animationData, // JSON 파일 경로를 path 옵션으로 전달
+              });
+            </script>
+            Game Meeple
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Slide section -->
+    <div class="carousel relative container mx-auto" style="max-width: 1600px">
+      <div class="carousel-inner relative overflow-hidden w-full">
+        <!--Slide 1-->
+        <input class="carousel-open" type="radio" id="carousel-1" name="carousel" aria-hidden="true" hidden="" checked="checked" />
+        <div class="carousel-item absolute opacity-0" style="height: 50vh">
+          <div class="block h-full w-full mx-auto flex pt-6 md:pt-0 md:items-center bg-cover bg-right" style="background-image: url('./public/images/slide1.jpg')">
+            <div class="container mx-auto">
+              <div class="flex flex-col w-full lg:w-1/2 md:ml-16 items-center md:items-start px-6 tracking-wide">
+                <p class="text-white text-2xl my-4">Strategy Games</p>
+                <a class="text-xl text-white inline-block no-underline border-b border-slate-600 leading-relaxed hover:text-gray-400 hover:border-gray-400" href="games.html">View Games</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <label
+          for="carousel-3"
+          class="prev control-1 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-gray-900 leading-tight text-center z-10 inset-y-0 left-0 my-auto"
+          >‹</label
+        >
+        <label
+          for="carousel-2"
+          class="next control-1 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-gray-900 leading-tight text-center z-10 inset-y-0 right-0 my-auto"
+          >›</label
+        >
+
+        <!--Slide 2-->
+        <input class="carousel-open" type="radio" id="carousel-2" name="carousel" aria-hidden="true" hidden="" />
+        <div class="carousel-item absolute opacity-0 bg-cover bg-right" style="height: 50vh">
+          <div class="block h-full w-full mx-auto flex pt-6 md:pt-0 md:items-center bg-cover bg-right" style="background-image: url('./public/images/slide2.jpg')">
+            <div class="container mx-auto">
+              <div class="flex flex-col w-full lg:w-1/2 md:ml-16 items-center md:items-start px-6 tracking-wide">
+                <p class="text-white text-2xl my-4">Card Games</p>
+                <a class="text-xl text-white inline-block border-b border-slate-600 leading-relaxed hover:text-gray-400 hover:border-gray-400" href="games.html">View Games</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <label
+          for="carousel-1"
+          class="prev control-2 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-gray-900 leading-tight text-center z-10 inset-y-0 left-0 my-auto"
+          >‹</label
+        >
+        <label
+          for="carousel-3"
+          class="next control-2 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-gray-900 leading-tight text-center z-10 inset-y-0 right-0 my-auto"
+          >›</label
+        >
+
+        <!--Slide 3-->
+        <input class="carousel-open" type="radio" id="carousel-3" name="carousel" aria-hidden="true" hidden="" />
+        <div class="carousel-item absolute opacity-0" style="height: 50vh">
+          <div class="block h-full w-full mx-auto flex pt-6 md:pt-0 md:items-center bg-cover bg-bottom" style="background-image: url('./public/images/game2.jpg')">
+            <div class="container mx-auto">
+              <div class="flex flex-col w-full lg:w-1/2 md:ml-16 items-center md:items-start px-6 tracking-wide">
+                <p class="text-white text-2xl my-4">Party Games</p>
+                <a class="text-xl text-white inline-block border-b border-slate-600 leading-relaxed hover:text-gray-400 hover:border-gray-400" href="/games.html">View Games</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <label
+          for="carousel-2"
+          class="prev control-3 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-gray-900 leading-tight text-center z-10 inset-y-0 left-0 my-auto"
+          >‹</label
+        >
+        <label
+          for="carousel-1"
+          class="next control-3 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-gray-900 leading-tight text-center z-10 inset-y-0 right-0 my-auto"
+          >›</label
+        >
+
+        <!-- Add additional indicators for each slide-->
+        <ol class="carousel-indicators">
+          <li class="inline-block mr-3">
+            <label for="carousel-1" class="carousel-bullet cursor-pointer block text-4xl text-gray-400 hover:text-gray-900">•</label>
+          </li>
+          <li class="inline-block mr-3">
+            <label for="carousel-2" class="carousel-bullet cursor-pointer block text-4xl text-gray-400 hover:text-gray-900">•</label>
+          </li>
+          <li class="inline-block mr-3">
+            <label for="carousel-3" class="carousel-bullet cursor-pointer block text-4xl text-gray-400 hover:text-gray-900">•</label>
+          </li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- Intro section -->
+    <section class="bg-white pt-8">
+      <div class="container py-8 px-6 mx-auto">
+        <div class="overflow-hidden sm:grid sm:grid-cols-2 sm:items-center">
+          <div class="p-8 md:p-12 lg:px-16 lg:py-24">
+            <div class="mx-auto max-w-xl text-center sm:text-left">
+              <h2 class="text-2xl font-bold text-gray-900 md:text-3xl uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 mb-8">Board Game?</h2>
+
+              <p class="hidden text-gray-500 md:mt-4 md:block">
+                보드 게임은 최소 두 명 이상의 사람들이 직접 대면하여 보드(board), 카드(card), 타일(tile)등 유형의 물리적인 도구를 이용하여 정해진 규칙에 따라 승패를 가리는 모든 놀이를 통칭합니다.
+              </p>
+            </div>
+          </div>
+          <div class="grid justify-items-center">
+            <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+            <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_fdiz42kg.json" background="transparent" speed="1" style="width: 300px; height: 300px" loop autoplay></lottie-player>
+          </div>
+        </div>
+
+        <section class="bg-white py-8">
+          <div class="container mx-auto flex items-center flex-wrap pt-4 pb-12">
+            <div class="w-full md:w-1/3 xl:w-1/3 p-6 flex flex-col">
+              <a href="https://www.boardgame.or.kr/association/boardgame" target="_blank" class="group relative block h-64 sm:h-80 lg:h-96">
+                <span class="absolute inset-0 border-2 border-dashed border-black"></span>
+                <div class="relative flex h-full transform items-end border-2 border-black bg-white transition-transform group-hover:-translate-x-2 group-hover:-translate-y-2">
+                  <div class="p-4 !pt-0 transition-opacity group-hover:absolute group-hover:opacity-0 sm:p-6 lg:p-8">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 sm:h-12 sm:w-12">
+                      <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                      <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                      <g id="SVGRepo_iconCarrier">
+                        <path
+                          fill-rule="evenodd"
+                          clip-rule="evenodd"
+                          d="M10.5014 1.15359C10.8116 0.975177 11.1935 0.97613 11.5029 1.15609C12.3449 1.64601 13.1238 2.05985 13.8587 2.4503L13.8587 2.45031C14.036 2.54449 14.2107 2.63732 14.3831 2.72953C15.2573 3.19699 16.0823 3.65354 16.811 4.16777C18.3248 5.23608 19.4192 6.5535 19.9701 8.7574C20.5121 10.9255 20.2212 12.8599 19.8424 14.661C19.7713 14.999 19.6979 15.33 19.6254 15.6567L19.6254 15.657L19.6253 15.6572C19.3752 16.7852 19.1364 17.8621 19.0422 19L19.4114 19L19.8418 19L19.9591 19H19.9896H19.9974H19.9994H19.9998H20H20C20.4304 19 20.8126 19.2754 20.9487 19.6838L21.7207 22H22C22.5523 22 23 22.4477 23 23C23 23.5523 22.5523 24 22 24H21H4.99999H3.99999C3.4477 24 2.99999 23.5523 2.99999 23C2.99999 22.4477 3.4477 22 3.99999 22H4.27923L5.0513 19.6838C5.18742 19.2754 5.56956 19 5.99999 19H7.32295L8.76926 15.3842L3.5401 16.7603C2.62461 17.0013 1.66561 16.5673 1.24226 15.7206L0.445745 14.1276C0.0446075 13.3253 0.224632 12.3499 0.899071 11.7473C1.70728 11.0252 3.23043 9.67416 4.3593 8.73219C4.843 8.32858 5.20051 7.8615 5.53425 7.34475C5.66811 7.13749 5.79158 6.93296 5.92146 6.71778C5.95694 6.65901 5.9929 6.59944 6.02967 6.53881C6.19574 6.26503 6.37548 5.97487 6.57499 5.69604C6.97917 5.13114 7.49272 4.57147 8.24793 4.18005C8.75596 3.91675 9.33341 3.75004 9.99999 3.68226V2.02045C9.99999 1.66259 10.1912 1.33201 10.5014 1.15359ZM10.9804 14.8024C11.0177 14.9867 11.0035 15.1837 10.9285 15.3714L9.47702 19L11.6541 19L17.0372 19C17.1375 17.6202 17.424 16.3351 17.6873 15.1537C17.7561 14.8451 17.8233 14.5436 17.8852 14.2493C18.2489 12.5205 18.458 10.955 18.0298 9.24247C17.6107 7.56581 16.836 6.63326 15.6578 5.80185C15.0405 5.36622 14.3138 4.96048 13.44 4.49317C13.2759 4.40542 13.1069 4.31563 12.9332 4.2234L12.9332 4.22336L12.933 4.22327L12.9325 4.22299C12.6347 4.06478 12.3233 3.89937 12 3.72468V4.6531C12 4.92495 11.8893 5.18509 11.6934 5.3736C11.4976 5.56212 11.2334 5.66277 10.9617 5.65237C10.0884 5.61894 9.54299 5.7615 9.16824 5.95573C8.79357 6.14991 8.50124 6.44093 8.20152 6.85983C8.04907 7.07288 7.90234 7.3079 7.73968 7.57607L7.64174 7.73808L7.64172 7.73812C7.50998 7.95641 7.36635 8.19443 7.21432 8.42982C6.82599 9.03109 6.34133 9.68314 5.64067 10.2678C4.54252 11.1841 3.04532 12.5118 2.23561 13.2352L3.03111 14.8262L11.7455 12.5329C12.2796 12.3924 12.8265 12.7114 12.9671 13.2455C13.1076 13.7796 12.7886 14.3265 12.2545 14.4671L10.9804 14.8024ZM7 21H9L9.05777 21L11.6541 21L18 21L19.2792 21L19.6126 22H6.38741L6.72075 21L7 21ZM9.5 11C10.3284 11 11 10.3284 11 9.5C11 8.67157 10.3284 8 9.5 8C8.67157 8 8 8.67157 8 9.5C8 10.3284 8.67157 11 9.5 11Z"
+                          fill="#000000"
+                        ></path>
+                      </g>
+                    </svg>
+                    <h2 class="mt-4 text-xl font-medium sm:text-2xl">보드게임의 의미는?</h2>
+                  </div>
+
+                  <div class="absolute p-4 opacity-0 transition-opacity group-hover:relative group-hover:opacity-100 sm:p-6 lg:p-8">
+                    <h3 class="mt-4 text-xl font-medium sm:text-2xl">보드게임의 의미는?</h3>
+
+                    <p class="mt-4 text-sm sm:text-base">
+                      엄밀한 의미에서는 Board Game 또는 Brett Spiel은 Card Game, 독어로는 Karten Spiel과 명백하게 구분되나 국내에서는 카드, 타일, 보드게임 등을 통칭하는 용어로 사용되고 있습니다.
+                    </p>
+                    <p class="mt-8 font-bold">Read more</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <div class="w-full md:w-1/3 xl:w-1/3 p-6 flex flex-col">
+              <a href="https://www.boardgame.or.kr/association/boardgame" target="_blank" class="group relative block h-64 sm:h-80 lg:h-96">
+                <span class="absolute inset-0 border-2 border-dashed border-black"></span>
+                <div class="relative flex h-full transform items-end border-2 border-black bg-white transition-transform group-hover:-translate-x-2 group-hover:-translate-y-2">
+                  <div class="p-4 !pt-0 transition-opacity group-hover:absolute group-hover:opacity-0 sm:p-6 lg:p-8">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 sm:h-12 sm:w-12">
+                      <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                      <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                      <g id="SVGRepo_iconCarrier">
+                        <path
+                          fill-rule="evenodd"
+                          clip-rule="evenodd"
+                          d="M5 3C5 2.44772 5.44772 2 6 2H18C18.5523 2 19 2.44772 19 3V21C19 21.5523 18.5523 22 18 22H6C5.44771 22 5 21.5523 5 21V3ZM6 0C4.34315 0 3 1.34315 3 3V21C3 22.6569 4.34315 24 6 24H18C19.6569 24 21 22.6569 21 21V3C21 1.34314 19.6569 0 18 0H6ZM10.2975 14.0556C10.7393 14.0556 11.1602 13.9302 11.5128 13.7109V15.0278H11.0267C10.7582 15.0278 10.5405 15.2455 10.5405 15.514C10.5405 15.7824 10.7582 16.0001 11.0267 16.0001H12.9711C13.2396 16.0001 13.4572 15.7824 13.4572 15.514C13.4572 15.2455 13.2396 15.0278 12.9711 15.0278H12.485V13.7109C12.8376 13.9302 13.2585 14.0556 13.7003 14.0556C14.8665 14.0556 15.8878 13.1816 15.8878 12.0139C15.8878 11.3139 15.4569 10.827 15.0429 10.4629C14.872 10.3127 14.6818 10.1649 14.5012 10.0246L14.5012 10.0246L14.5011 10.0246L14.5011 10.0245L14.5011 10.0245L14.501 10.0244L14.5005 10.0241L14.4993 10.0232C14.4594 9.99211 14.4199 9.96144 14.3812 9.9312C14.1598 9.75805 13.9528 9.59026 13.7693 9.40926C13.1961 8.84383 12.6668 7.94843 12.4263 7.50459C12.3414 7.34772 12.1773 7.25 11.9989 7.25C11.8205 7.25 11.6564 7.34772 11.5715 7.50459C11.3311 7.94843 10.8017 8.84383 10.2285 9.40926C10.045 9.59026 9.83801 9.75805 9.61658 9.9312C9.57733 9.96189 9.53725 9.99303 9.4967 10.0245L9.49669 10.0245C9.31611 10.1648 9.12586 10.3126 8.95494 10.4629C8.54094 10.827 8.10999 11.3139 8.10999 12.0139C8.10999 13.1816 9.13129 14.0556 10.2975 14.0556ZM8 3.5C8.18939 3.5 8.36252 3.607 8.44721 3.77639L9.44721 5.77639L9.94721 6.77639C10.0707 7.02338 9.9706 7.32372 9.72361 7.44721C9.47662 7.57071 9.17628 7.4706 9.05279 7.22361L8.69098 6.5H7.30902L6.94721 7.22361C6.82372 7.4706 6.52338 7.57071 6.27639 7.44721C6.0294 7.32372 5.92929 7.02338 6.05279 6.77639L6.55279 5.77639L7.55279 3.77639C7.63748 3.607 7.81061 3.5 8 3.5ZM8.19098 5.5L8 5.11803L7.80902 5.5H8.19098ZM16.4472 16.7764C16.3625 16.607 16.1894 16.5 16 16.5C15.8106 16.5 15.6375 16.607 15.5528 16.7764L14.5528 18.7764L14.0528 19.7764C13.9293 20.0234 14.0294 20.3237 14.2764 20.4472C14.5234 20.5707 14.8237 20.4706 14.9472 20.2236L15.309 19.5H16.691L17.0528 20.2236C17.1763 20.4706 17.4766 20.5707 17.7236 20.4472C17.9706 20.3237 18.0707 20.0234 17.9472 19.7764L17.4472 18.7764L16.4472 16.7764ZM16 18.118L16.191 18.5H15.809L16 18.118Z"
+                          fill="#000000"
+                        ></path>
+                      </g>
+                    </svg>
+
+                    <h2 class="mt-4 text-xl font-medium sm:text-2xl">보드게임의 소재는?</h2>
+                  </div>
+
+                  <div class="absolute p-4 opacity-0 transition-opacity group-hover:relative group-hover:opacity-100 sm:p-6 lg:p-8">
+                    <h3 class="mt-4 text-xl font-medium sm:text-2xl">보드게임의 소재는?</h3>
+
+                    <p class="mt-4 text-sm sm:text-base">보드게임의 소재로 역사, 전쟁, 경제, 언어, 음악, 미술, 스포츠, 영화 등 인류의 모든 지식과 문화가 활용되고 있습니다.</p>
+                    <p class="mt-8 font-bold">Read more</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <div class="w-full md:w-1/3 xl:w-1/3 p-6 flex flex-col">
+              <a href="https://www.boardgame.or.kr/association/boardgame" target="_blank" class="group relative block h-64 sm:h-80 lg:h-96">
+                <span class="absolute inset-0 border-2 border-dashed border-black"></span>
+                <div class="relative flex h-full transform items-end border-2 border-black bg-white transition-transform group-hover:-translate-x-2 group-hover:-translate-y-2">
+                  <div class="p-4 !pt-0 transition-opacity group-hover:absolute group-hover:opacity-0 sm:p-6 lg:p-8">
+                    <svg fill="#000000" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 sm:h-12 sm:w-12">
+                      <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                      <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                      <g id="SVGRepo_iconCarrier">
+                        <path
+                          d="M 8 4 L 8 6 L 4.8007812 6 L 6.0742188 12 L 6 12 C 5.4 12 5 12.4 5 13 C 5 13.6 5.4 14 6 14 L 6.109375 14 L 5.0917969 21 L 5 21 C 4.4 21 4 21.4 4 22 C 4 22.31975 4.119476 22.576073 4.3164062 22.751953 L 3 24.699219 L 3 27 L 15 27 L 15.099609 27 L 15.099609 24.699219 L 13.744141 22.693359 C 13.903452 22.520011 14 22.285236 14 22 C 14 21.4 13.6 21 13 21 L 12.890625 21 L 11.808594 14 L 12 14 C 12.6 14 13 13.6 13 13 C 13 12.4 12.6 12 12 12 L 11.949219 12 L 13.300781 6 L 10 6 L 10 4 L 8 4 z M 7.1992188 8 L 10.800781 8 L 9.9003906 12 L 8.0996094 12 L 7.1992188 8 z M 19 9 L 19 11 L 19 12 L 19 15.400391 L 19.900391 16.300781 L 19.128906 21 L 19 21 C 18.4 21 18 21.4 18 22 C 18 22.31975 18.119476 22.576073 18.316406 22.751953 L 17 24.699219 L 17 27 L 29 27 L 29.099609 27 L 29.099609 24.699219 L 27.744141 22.693359 C 27.903452 22.520011 28 22.285236 28 22 C 28 21.4 27.6 21 27 21 L 26.871094 21 L 26.099609 16.300781 L 27 15.400391 L 27 12 L 27 11 L 27 9 L 25 9 L 25 11 L 24 11 L 24 9 L 22 9 L 22 11 L 21 11 L 21 9 L 19 9 z M 21 13 L 25 13 L 25 14.599609 L 23.900391 15.699219 L 24.800781 21 L 21.199219 21 L 22.099609 15.699219 L 21 14.599609 L 21 13 z M 8.1992188 14 L 9.9003906 14 L 10.900391 21 L 7.1992188 21 L 8.1992188 14 z M 6.5 23 L 11.5 23 L 12.800781 25 L 5.1992188 25 L 6.5 23 z M 20.599609 23 L 25.5 23 L 26.800781 25 L 19.199219 25 L 20.599609 23 z"
+                        ></path>
+                      </g>
+                    </svg>
+
+                    <h2 class="mt-4 text-xl font-medium sm:text-2xl">보드게임의 현황은?</h2>
+                  </div>
+
+                  <div class="absolute p-4 opacity-0 transition-opacity group-hover:relative group-hover:opacity-100 sm:p-6 lg:p-8">
+                    <h3 class="mt-4 text-xl font-medium sm:text-2xl">보드게임의 현황은?</h3>
+
+                    <p class="mt-4 text-sm sm:text-base">현재 전세계 50,000여종의 보드게임이 존재하며, 매년 1,000여 종에 가까운 신작들이 전세계 보드게임 개발자들에 의해 출시되고 있습니다.</p>
+                    <p class="mt-8 font-bold">Read more</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <!-- Best 8 section -->
+    <section class="bg-white py-8">
+      <div class="container mx-auto flex items-center flex-wrap pt-4 pb-12">
+        <nav id="Best Items" class="w-full z-30 top-0 px-6 py-1">
+          <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-2 py-3">
+            <h2 class="text-2xl font-bold md:text-3xl uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800">Best 8</h2>
+          </div>
+        </nav>
+
+        <div class="w-full md:w-1/3 xl:w-1/4 p-6 flex flex-col">
+          <a
+            href="https://www.divedice.com/shop/detail.php?pno=EBB884F6FC4D14827B8C55D8411D8213&rURL=https%3A%2F%2Fwww.divedice.com%2Fshop%2Fsearch_result.php%3Fsearch_str%3D%25EC%2597%2590%25EC%259D%25B4%25EC%2596%25B8%25EC%25A6%2588%2B%25EC%2597%2594%25EB%2593%259C%26x%3D0%26y%3D0&ctype=1&cno1="
+            target="_blank"
+          >
+            <img class="hover:grow hover:shadow-lg" src="./public/images/best1.png" />
+            <div class="pt-3 flex items-center justify-between">
+              <p class="">에이언즈 엔드</p>
+              <svg class="h-6 w-6 fill-current text-gray-500 hover:text-black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path
+                  d="M12,4.595c-1.104-1.006-2.512-1.558-3.996-1.558c-1.578,0-3.072,0.623-4.213,1.758c-2.353,2.363-2.352,6.059,0.002,8.412 l7.332,7.332c0.17,0.299,0.498,0.492,0.875,0.492c0.322,0,0.609-0.163,0.792-0.409l7.415-7.415 c2.354-2.354,2.354-6.049-0.002-8.416c-1.137-1.131-2.631-1.754-4.209-1.754C14.513,3.037,13.104,3.589,12,4.595z M18.791,6.205 c1.563,1.571,1.564,4.025,0.002,5.588L12,18.586l-6.793-6.793C3.645,10.23,3.646,7.776,5.205,6.209 c0.76-0.756,1.754-1.172,2.799-1.172s2.035,0.416,2.789,1.17l0.5,0.5c0.391,0.391,1.023,0.391,1.414,0l0.5-0.5 C14.719,4.698,17.281,4.702,18.791,6.205z"
+                />
+              </svg>
+            </div>
+            <p class="pt-1 text-gray-900">₩95,000</p>
+          </a>
+        </div>
+
+        <div class="w-full md:w-1/3 xl:w-1/4 p-6 flex flex-col">
+          <a
+            href="https://www.divedice.com/shop/detail.php?pno=D0BED3A3E689D20F4F3FD0B5EECD2D4B&rURL=https%3A%2F%2Fwww.divedice.com%2Fshop%2Fsearch_result.php%3Fsearch_str%3D%25EC%2595%2584%25EB%25B0%259C%25EB%25A1%25A0%26x%3D0%26y%3D0&ctype=1&cno1="
+            target="_blank"
+          >
+            <img class="hover:grow hover:shadow-lg" src="./public/images/best2.png" />
+            <div class="pt-3 flex items-center justify-between">
+              <p class="">아발론 빅 박스</p>
+              <svg class="h-6 w-6 fill-current text-gray-500 hover:text-black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path
+                  d="M12,4.595c-1.104-1.006-2.512-1.558-3.996-1.558c-1.578,0-3.072,0.623-4.213,1.758c-2.353,2.363-2.352,6.059,0.002,8.412 l7.332,7.332c0.17,0.299,0.498,0.492,0.875,0.492c0.322,0,0.609-0.163,0.792-0.409l7.415-7.415 c2.354-2.354,2.354-6.049-0.002-8.416c-1.137-1.131-2.631-1.754-4.209-1.754C14.513,3.037,13.104,3.589,12,4.595z M18.791,6.205 c1.563,1.571,1.564,4.025,0.002,5.588L12,18.586l-6.793-6.793C3.645,10.23,3.646,7.776,5.205,6.209 c0.76-0.756,1.754-1.172,2.799-1.172s2.035,0.416,2.789,1.17l0.5,0.5c0.391,0.391,1.023,0.391,1.414,0l0.5-0.5 C14.719,4.698,17.281,4.702,18.791,6.205z"
+                />
+              </svg>
+            </div>
+            <p class="pt-1 text-gray-900">₩33,000</p>
+          </a>
+        </div>
+
+        <div class="w-full md:w-1/3 xl:w-1/4 p-6 flex flex-col">
+          <a
+            href="https://www.divedice.com/shop/detail.php?pno=1E2D681B253CB12C33F7B4823AF01D79&rURL=https%3A%2F%2Fwww.divedice.com%2Fshop%2Fsearch_result.php%3Fsearch_str%3D%25EC%2595%2588%25EA%25B0%25AF%25EC%2586%258D%26x%3D0%26y%3D0&ctype=1&cno1="
+            target="_blank"
+          >
+            <img class="hover:grow hover:shadow-lg" src="./public/images/best3.png" />
+            <div class="pt-3 flex items-center justify-between">
+              <p class="">안갯속의 카르카손</p>
+              <svg class="h-6 w-6 fill-current text-gray-500 hover:text-black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path
+                  d="M12,4.595c-1.104-1.006-2.512-1.558-3.996-1.558c-1.578,0-3.072,0.623-4.213,1.758c-2.353,2.363-2.352,6.059,0.002,8.412 l7.332,7.332c0.17,0.299,0.498,0.492,0.875,0.492c0.322,0,0.609-0.163,0.792-0.409l7.415-7.415 c2.354-2.354,2.354-6.049-0.002-8.416c-1.137-1.131-2.631-1.754-4.209-1.754C14.513,3.037,13.104,3.589,12,4.595z M18.791,6.205 c1.563,1.571,1.564,4.025,0.002,5.588L12,18.586l-6.793-6.793C3.645,10.23,3.646,7.776,5.205,6.209 c0.76-0.756,1.754-1.172,2.799-1.172s2.035,0.416,2.789,1.17l0.5,0.5c0.391,0.391,1.023,0.391,1.414,0l0.5-0.5 C14.719,4.698,17.281,4.702,18.791,6.205z"
+                />
+              </svg>
+            </div>
+            <p class="pt-1 text-gray-900">₩46,000</p>
+          </a>
+        </div>
+
+        <div class="w-full md:w-1/3 xl:w-1/4 p-6 flex flex-col">
+          <a
+            href="https://www.divedice.com/shop/detail.php?pno=F24589B329C48EAAD3EF1C9A9779F076&rURL=https%3A%2F%2Fwww.divedice.com%2Fshop%2Fsearch_result.php%3Fsearch_str%3D%25EC%2595%2584%25EA%25B7%25B8%25EB%25A6%25AC%26x%3D0%26y%3D0&ctype=1&cno1="
+            target="_blank"
+          >
+            <img class="hover:grow hover:shadow-lg" src="./public/images/best4.png" />
+            <div class="pt-3 flex items-center justify-between">
+              <p class="">아그리콜라 15주년 기념판</p>
+              <svg class="h-6 w-6 fill-current text-gray-500 hover:text-black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path
+                  d="M12,4.595c-1.104-1.006-2.512-1.558-3.996-1.558c-1.578,0-3.072,0.623-4.213,1.758c-2.353,2.363-2.352,6.059,0.002,8.412 l7.332,7.332c0.17,0.299,0.498,0.492,0.875,0.492c0.322,0,0.609-0.163,0.792-0.409l7.415-7.415 c2.354-2.354,2.354-6.049-0.002-8.416c-1.137-1.131-2.631-1.754-4.209-1.754C14.513,3.037,13.104,3.589,12,4.595z M18.791,6.205 c1.563,1.571,1.564,4.025,0.002,5.588L12,18.586l-6.793-6.793C3.645,10.23,3.646,7.776,5.205,6.209 c0.76-0.756,1.754-1.172,2.799-1.172s2.035,0.416,2.789,1.17l0.5,0.5c0.391,0.391,1.023,0.391,1.414,0l0.5-0.5 C14.719,4.698,17.281,4.702,18.791,6.205z"
+                />
+              </svg>
+            </div>
+            <p class="pt-1 text-gray-900">₩190,000</p>
+          </a>
+        </div>
+
+        <div class="w-full md:w-1/3 xl:w-1/4 p-6 flex flex-col">
+          <a
+            href="https://www.divedice.com/shop/detail.php?pno=6F7790BB54A7C5D3DEA27385488A604A&rURL=https%3A%2F%2Fwww.divedice.com%2Fshop%2Fsearch_result.php%3Fsearch_str%3D%25EC%2584%259C%25EC%25AA%25BD%26x%3D0%26y%3D0&ctype=1&cno1="
+            target="_blank"
+          >
+            <img class="hover:grow hover:shadow-lg" src="./public/images/best5.png" />
+            <div class="pt-3 flex items-center justify-between">
+              <p class="">서쪽 왕국의 성기사</p>
+              <svg class="h-6 w-6 fill-current text-gray-500 hover:text-black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path
+                  d="M12,4.595c-1.104-1.006-2.512-1.558-3.996-1.558c-1.578,0-3.072,0.623-4.213,1.758c-2.353,2.363-2.352,6.059,0.002,8.412 l7.332,7.332c0.17,0.299,0.498,0.492,0.875,0.492c0.322,0,0.609-0.163,0.792-0.409l7.415-7.415 c2.354-2.354,2.354-6.049-0.002-8.416c-1.137-1.131-2.631-1.754-4.209-1.754C14.513,3.037,13.104,3.589,12,4.595z M18.791,6.205 c1.563,1.571,1.564,4.025,0.002,5.588L12,18.586l-6.793-6.793C3.645,10.23,3.646,7.776,5.205,6.209 c0.76-0.756,1.754-1.172,2.799-1.172s2.035,0.416,2.789,1.17l0.5,0.5c0.391,0.391,1.023,0.391,1.414,0l0.5-0.5 C14.719,4.698,17.281,4.702,18.791,6.205z"
+                />
+              </svg>
+            </div>
+            <p class="pt-1 text-gray-900">₩71,000</p>
+          </a>
+        </div>
+
+        <div class="w-full md:w-1/3 xl:w-1/4 p-6 flex flex-col">
+          <a
+            href="https://www.divedice.com/shop/detail.php?pno=FC4501033DD658D8546AF02BE552BA71&rURL=https%3A%2F%2Fwww.divedice.com%2Fshop%2Fsearch_result.php%3Fsearch_str%3D%25EC%259B%25A8%25EB%258D%2594%26x%3D0%26y%3D0&ctype=1&cno1="
+            target="_blank"
+          >
+            <img class="hover:grow hover:shadow-lg" src="./public/images/best6.png" />
+            <div class="pt-3 flex items-center justify-between">
+              <p class="">웨더 머신</p>
+              <svg class="h-6 w-6 fill-current text-gray-500 hover:text-black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path
+                  d="M12,4.595c-1.104-1.006-2.512-1.558-3.996-1.558c-1.578,0-3.072,0.623-4.213,1.758c-2.353,2.363-2.352,6.059,0.002,8.412 l7.332,7.332c0.17,0.299,0.498,0.492,0.875,0.492c0.322,0,0.609-0.163,0.792-0.409l7.415-7.415 c2.354-2.354,2.354-6.049-0.002-8.416c-1.137-1.131-2.631-1.754-4.209-1.754C14.513,3.037,13.104,3.589,12,4.595z M18.791,6.205 c1.563,1.571,1.564,4.025,0.002,5.588L12,18.586l-6.793-6.793C3.645,10.23,3.646,7.776,5.205,6.209 c0.76-0.756,1.754-1.172,2.799-1.172s2.035,0.416,2.789,1.17l0.5,0.5c0.391,0.391,1.023,0.391,1.414,0l0.5-0.5 C14.719,4.698,17.281,4.702,18.791,6.205z"
+                />
+              </svg>
+            </div>
+            <p class="pt-1 text-gray-900">₩289,000</p>
+          </a>
+        </div>
+
+        <div class="w-full md:w-1/3 xl:w-1/4 p-6 flex flex-col">
+          <a
+            href="https://www.divedice.com/shop/detail.php?pno=DC506560E1F9F5F4A27C6614123E2E50&rURL=https%3A%2F%2Fwww.divedice.com%2Fshop%2Fsearch_result.php%3Fsearch_str%3D%25EB%25A3%25A8%25EB%25AF%25B8%26x%3D0%26y%3D0&ctype=1&cno1="
+            target="_blank"
+          >
+            <img class="hover:grow hover:shadow-lg" src="./public/images/best7.png" />
+            <div class="pt-3 flex items-center justify-between">
+              <p class="">루미큐브 클래식</p>
+              <svg class="h-6 w-6 fill-current text-gray-500 hover:text-black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path
+                  d="M12,4.595c-1.104-1.006-2.512-1.558-3.996-1.558c-1.578,0-3.072,0.623-4.213,1.758c-2.353,2.363-2.352,6.059,0.002,8.412 l7.332,7.332c0.17,0.299,0.498,0.492,0.875,0.492c0.322,0,0.609-0.163,0.792-0.409l7.415-7.415 c2.354-2.354,2.354-6.049-0.002-8.416c-1.137-1.131-2.631-1.754-4.209-1.754C14.513,3.037,13.104,3.589,12,4.595z M18.791,6.205 c1.563,1.571,1.564,4.025,0.002,5.588L12,18.586l-6.793-6.793C3.645,10.23,3.646,7.776,5.205,6.209 c0.76-0.756,1.754-1.172,2.799-1.172s2.035,0.416,2.789,1.17l0.5,0.5c0.391,0.391,1.023,0.391,1.414,0l0.5-0.5 C14.719,4.698,17.281,4.702,18.791,6.205z"
+                />
+              </svg>
+            </div>
+            <p class="pt-1 text-gray-900">₩44,000</p>
+          </a>
+        </div>
+
+        <div class="w-full md:w-1/3 xl:w-1/4 p-6 flex flex-col">
+          <a
+            href="https://www.divedice.com/shop/detail.php?pno=C7E791B16611DECA87A347C22CE64E11&rURL=https%3A%2F%2Fwww.divedice.com%2Fshop%2Fsearch_result.php%3Fsearch_str%3D%25EC%25B9%25B4%25ED%2583%2584%26x%3D0%26y%3D0&ctype=1&cno1="
+            target="_blank"
+          >
+            <img class="hover:grow hover:shadow-lg" src="./public/images/best8.png" />
+            <div class="pt-3 flex items-center justify-between">
+              <p class="">카탄</p>
+              <svg class="h-6 w-6 fill-current text-gray-500 hover:text-black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path
+                  d="M12,4.595c-1.104-1.006-2.512-1.558-3.996-1.558c-1.578,0-3.072,0.623-4.213,1.758c-2.353,2.363-2.352,6.059,0.002,8.412 l7.332,7.332c0.17,0.299,0.498,0.492,0.875,0.492c0.322,0,0.609-0.163,0.792-0.409l7.415-7.415 c2.354-2.354,2.354-6.049-0.002-8.416c-1.137-1.131-2.631-1.754-4.209-1.754C14.513,3.037,13.104,3.589,12,4.595z M18.791,6.205 c1.563,1.571,1.564,4.025,0.002,5.588L12,18.586l-6.793-6.793C3.645,10.23,3.646,7.776,5.205,6.209 c0.76-0.756,1.754-1.172,2.799-1.172s2.035,0.416,2.789,1.17l0.5,0.5c0.391,0.391,1.023,0.391,1.414,0l0.5-0.5 C14.719,4.698,17.281,4.702,18.791,6.205z"
+                />
+              </svg>
+            </div>
+            <p class="pt-1 text-gray-900">₩59,000</p>
+          </a>
+        </div>
+
+        <!-- <div class="w-full md:w-1/3 xl:w-1/4 p-6 flex flex-col">
+          <a
+            href="https://www.divedice.com/shop/detail.php?pno=C7E791B16611DECA87A347C22CE64E11&rURL=https%3A%2F%2Fwww.divedice.com%2Fshop%2Fsearch_result.php%3Fsearch_str%3D%25EC%25B9%25B4%25ED%2583%2584%26x%3D0%26y%3D0&ctype=1&cno1="
+            target="_blank"
+          >
+            <img class="hover:grow hover:shadow-lg" src="./public/images/best8.png" />
+            <div class="pt-3 flex items-center justify-between">
+              <p class="">카탄</p>
+              <div class="flex items-center">
+                <svg
+                  viewBox="0 0 20 20"
+                  version="1.1"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  fill="#808080"
+                  class="h-5 w-5 fill-current text-gray-500 hover:text-black"
+                >
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <title>profile_round [#1342]</title>
+                    <desc>Created with Sketch.</desc>
+                    <defs></defs>
+                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                      <g id="Dribbble-Light-Preview" transform="translate(-140.000000, -2159.000000)" fill="#808080">
+                        <g id="icons" transform="translate(56.000000, 160.000000)">
+                          <path
+                            d="M100.562548,2016.99998 L87.4381713,2016.99998 C86.7317804,2016.99998 86.2101535,2016.30298 86.4765813,2015.66198 C87.7127655,2012.69798 90.6169306,2010.99998 93.9998492,2010.99998 C97.3837885,2010.99998 100.287954,2012.69798 101.524138,2015.66198 C101.790566,2016.30298 101.268939,2016.99998 100.562548,2016.99998 M89.9166645,2004.99998 C89.9166645,2002.79398 91.7489936,2000.99998 93.9998492,2000.99998 C96.2517256,2000.99998 98.0830339,2002.79398 98.0830339,2004.99998 C98.0830339,2007.20598 96.2517256,2008.99998 93.9998492,2008.99998 C91.7489936,2008.99998 89.9166645,2007.20598 89.9166645,2004.99998 M103.955674,2016.63598 C103.213556,2013.27698 100.892265,2010.79798 97.837022,2009.67298 C99.4560048,2008.39598 100.400241,2006.33098 100.053171,2004.06998 C99.6509769,2001.44698 97.4235996,1999.34798 94.7348224,1999.04198 C91.0232075,1998.61898 87.8750721,2001.44898 87.8750721,2004.99998 C87.8750721,2006.88998 88.7692896,2008.57398 90.1636971,2009.67298 C87.1074334,2010.79798 84.7871636,2013.27698 84.044024,2016.63598 C83.7745338,2017.85698 84.7789973,2018.99998 86.0539717,2018.99998 L101.945727,2018.99998 C103.221722,2018.99998 104.226185,2017.85698 103.955674,2016.63598"
+                            id="profile_round-[#1342]"
+                          ></path>
+                        </g>
+                      </g>
+                    </g>
+                  </g>
+                </svg>
+                <p class="text-gray-900">&nbsp2~4</p>
+              </div>
+            </div>
+            <p class="pt-1 text-gray-900">₩59,000</p>
+          </a>
+        </div> -->
+      </div>
+    </section>
+
+    <!-- footer -->
+    <footer class="container mx-auto bg-white py-8 border-t border-gray-400">
+      <div class="container flex px-3 py-8">
+        <div class="w-full mx-auto flex flex-wrap">
+          <div class="flex w-full lg:w-1/2">
+            <div class="px-3 md:px-0">
+              <h3 class="font-bold text-gray-900 hover:text-rose-600">&copy; Copyright</h3>
+              <p class="py-4">2023 &middot; Joonbu Univ. &middot; Team GameMeeple</p>
+            </div>
+          </div>
+          <div class="flex w-full lg:w-1/2 lg:justify-end lg:text-right">
+            <div class="px-3 md:px-0">
+              <h3 class="font-bold text-gray-900">Link</h3>
+              <ul class="list-reset items-center pt-3">
+                <li>
+                  <a class="inline-block no-underline hover:text-black hover:underline py-1" href="#">Game Meeple</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
