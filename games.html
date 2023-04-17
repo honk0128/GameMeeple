@@ -143,11 +143,16 @@
 
         <script>
           // Sample products data
+
+          function formatPrice(price) {
+            return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+          }
           const products = [
             {
               name: '에이언즈 엔드',
               member: "1~4",
               price: 95000,
+              formattedPrice: formatPrice(95000),
               imgSrc: './public/images/best1.png',
               link: "https://www.divedice.com/shop/detail.php?pno=EBB884F6FC4D14827B8C55D8411D8213&rURL=https%3A%2F%2Fwww.divedice.com%2Fshop%2Fsearch_result.php%3Fsearch_str%3D%25EC%2597%2590%25EC%259D%25B4%25EC%2596%25B8%25EC%25A6%2588%2B%25EC%2597%2594%25EB%2593%259C%26x%3D0%26y%3D0&ctype=1&cno1="
             },
@@ -155,6 +160,7 @@
               name: '아발론 빅 박스',
               member: "5~10",
               price: 33000,
+              formattedPrice: formatPrice(33000),
               imgSrc: './public/images/best2.png',
               link: "https://www.divedice.com/shop/detail.php?pno=D0BED3A3E689D20F4F3FD0B5EECD2D4B&rURL=https%3A%2F%2Fwww.divedice.com%2Fshop%2Fsearch_result.php%3Fsearch_str%3D%25EC%2595%2584%25EB%25B0%259C%25EB%25A1%25A0%26x%3D0%26y%3D0&ctype=1&cno1="
             },
@@ -162,6 +168,7 @@
               name: '안갯속의 카르카손',
               member: "1~5",
               price: 46000,
+              formattedPrice: formatPrice(46000),
               imgSrc: './public/images/best3.png',
               link: "https://www.divedice.com/shop/detail.php?pno=1E2D681B253CB12C33F7B4823AF01D79&rURL=https%3A%2F%2Fwww.divedice.com%2Fshop%2Fsearch_result.php%3Fsearch_str%3D%25EC%2595%2588%25EA%25B0%25AF%25EC%2586%258D%26x%3D0%26y%3D0&ctype=1&cno1="
             },
@@ -169,6 +176,7 @@
               name: '아그리콜라 15주년 기념판',
               member: "1~4",
               price: 190000,
+              formattedPrice: formatPrice(190000),
               imgSrc: './public/images/best4.png',
               link: "https://www.divedice.com/shop/detail.php?pno=F24589B329C48EAAD3EF1C9A9779F076&rURL=https%3A%2F%2Fwww.divedice.com%2Fshop%2Fsearch_result.php%3Fsearch_str%3D%25EC%2595%2584%25EA%25B7%25B8%25EB%25A6%25AC%26x%3D0%26y%3D0&ctype=1&cno1="
             },
@@ -176,6 +184,7 @@
               name: '서쪽 왕국의 성기사',
               member: "1~4",
               price: 71000,
+              formattedPrice: formatPrice(71000),
               imgSrc: './public/images/best5.png',
               link: "https://www.divedice.com/shop/detail.php?pno=6F7790BB54A7C5D3DEA27385488A604A&rURL=https%3A%2F%2Fwww.divedice.com%2Fshop%2Fsearch_result.php%3Fsearch_str%3D%25EC%2584%259C%25EC%25AA%25BD%26x%3D0%26y%3D0&ctype=1&cno1="
             },
@@ -183,6 +192,7 @@
               name: '웨더 머신',
               member: "1~4",
               price: 289000,
+              formattedPrice: formatPrice(289000),
               imgSrc: './public/images/best6.png',
               link: "https://www.divedice.com/shop/detail.php?pno=FC4501033DD658D8546AF02BE552BA71&rURL=https%3A%2F%2Fwww.divedice.com%2Fshop%2Fsearch_result.php%3Fsearch_str%3D%25EC%259B%25A8%25EB%258D%2594%26x%3D0%26y%3D0&ctype=1&cno1="
             },
@@ -190,6 +200,7 @@
               name: '루미큐브 클래식',
               member: "2~4",
               price: 44000,
+              formattedPrice: formatPrice(44000),
               imgSrc: './public/images/best7.png',
               link: "https://www.divedice.com/shop/detail.php?pno=DC506560E1F9F5F4A27C6614123E2E50&rURL=https%3A%2F%2Fwww.divedice.com%2Fshop%2Fsearch_result.php%3Fsearch_str%3D%25EB%25A3%25A8%25EB%25AF%25B8%26x%3D0%26y%3D0&ctype=1&cno1="
             },
@@ -197,6 +208,7 @@
               name: '카탄',
               member: "3~4",
               price: 59000,
+              formattedPrice: formatPrice(59000),
               imgSrc: './public/images/best8.png',
               link: "https://www.divedice.com/shop/detail.php?pno=C7E791B16611DECA87A347C22CE64E11&rURL=https%3A%2F%2Fwww.divedice.com%2Fshop%2Fsearch_result.php%3Fsearch_str%3D%25EC%25B9%25B4%25ED%2583%2584%26x%3D0%26y%3D0&ctype=1&cno1="
             },
@@ -204,6 +216,7 @@
               name: '윙스팬',
               member: "1~5",
               price: 57900,
+              formattedPrice: formatPrice(57900),
               imgSrc: './public/images/games1.jpg',
               link: "https://www.divedice.com/shop/detail.php?pno=C4CAEED371D0E0DC4A6EA62B9E297914&rURL=https%3A%2F%2Fwww.divedice.com%2Fshop%2Fbig_section.php%3Fcno1%3D2024&ctype=1&cno1=2024"
             },
@@ -211,6 +224,7 @@
               name: '7원더스 2판',
               member: "3~7",
               price: 75000,
+              formattedPrice: formatPrice(75000),
               imgSrc: './public/images/games2.png',
               link: "https://www.divedice.com/shop/detail.php?pno=EE77E8FB3CBE33BA56700DE13AE53F36&rURL=https%3A%2F%2Fwww.divedice.com%2Fshop%2Fbig_section.php%3Fcno1%3D2024&ctype=1&cno1=2024"
             },
@@ -218,6 +232,7 @@
               name: '스페이스 크루',
               member: "2~5",
               price: 20000,
+              formattedPrice: formatPrice(20000),
               imgSrc: './public/images/games3.jpg',
               link: "https://www.divedice.com/shop/detail.php?pno=9912AA9AF53C4553B443C5007AD11851&rURL=https%3A%2F%2Fwww.divedice.com%2Fshop%2Fbig_section.php%3Fcno1%3D2024&ctype=1&cno1=2024"
             },
@@ -225,6 +240,7 @@
               name: '안도르의 전설',
               member: "1~5",
               price: 66000,
+              formattedPrice: formatPrice(66000),
               imgSrc: './public/images/games4.jpg',
               link: "https://www.divedice.com/shop/detail.php?pno=122A3DB2ED92DE4629B8D0887E498195&rURL=https%3A%2F%2Fwww.divedice.com%2Fshop%2Fbig_section.php%3Fcno1%3D2024&ctype=1&cno1=2024"
             },
@@ -292,7 +308,7 @@
               </div>
                   
                   </div>
-                  <p class="pt-1 text-gray-900">&#8361;${product.price}</p>
+                  <p class="pt-1 text-gray-900">&#8361;${product.formattedPrice}</p>
                 </a>
                 </li>
               `;
